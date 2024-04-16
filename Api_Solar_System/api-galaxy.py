@@ -3,102 +3,92 @@ import os
 
 def get_data():
     os.system("clear")  # Clear the screen
-    print(":: SOLAR SYSTEM INFORMATION")
+    print("::: INFORMACIÓN DEL SISTEMA SOLAR :::")
     
     while True:
-        print("#### MAIN MENU ####")
-        print("[1]. Planets")
-        print("[2]. Moons")
-        print("[3]. Stars")
-        print("[4]. Asteroids")
-        print("[5]. Comets")
-        print("[6]. Exit")
+        print("::: MENÚ :::")
+        print("[1]. Planetas")
+        print("[2]. Lunas")
+        print("[3]. Estrellas")
+        print("[4]. Asteroides")
+        print("[5]. Cometas")
+        print("[6]. Salir")
         
-        option = input("Press an option: ")
+        opt = input("Elija una opción: ")
         
-        if option == "1":
-            get_planets()
-        elif option == "2":
-            get_moons()
-        elif option == "3":
-            get_stars()
-        elif option == "4":
-            get_asteroids()
-        elif option == "5":
-            get_comets()
-        elif option == "6":
-            print("Exiting...")
+        if opt == "1":
+            api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
+            response = requests.get(api_url)
+            data = response.json()
+            
+            print("\n::: Planetas :::")
+            for body in data["bodies"]:
+                if body["bodyType"] == "Planet":
+                    print(f"Nombre: {body['englishName']}")
+                    print(f"Gravedad: {body['gravity']}")
+                    print(f"Inclinación: {body['inclination']}")
+                    print(f"Es Planeta: {body['isPlanet']}")
+                    print()
+
+        elif opt == "2":
+            api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
+            response = requests.get(api_url)
+            data = response.json()
+
+            print("\n::: Lunas :::")
+            for body in data["bodies"]:
+                if body["bodyType"] == "Moon":
+                    print(f"Nombre: {body['englishName']}")
+                    print(f"Gravedad: {body['gravity']}")
+                    print(f"Inclinación: {body['inclination']}")
+                    print(f"Es Planeta: {body['isPlanet']}")
+                    print()
+
+        elif opt == "3":
+            api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
+            response = requests.get(api_url)
+            data = response.json()
+    
+            print("\n::: Estrellas :::")
+            for body in data["bodies"]:
+                if body["bodyType"] == "Star": 
+                    print(f"Nombre: {body['englishName']}")
+                    print(f"Gravedad: {body['gravity']}")
+                    print(f"Inclinación: {body['inclination']}")
+                    print(f"Es Planeta: {body['isPlanet']}")
+                    print()
+
+        elif opt == "4":
+            api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
+            response = requests.get(api_url)
+            data = response.json()
+    
+            print("\n::: Asteroides :::")
+            for body in data["bodies"]:
+                if body["bodyType"] == "Asteroid":
+                    print(f"Nombre: {body['englishName']}")
+                    print(f"Gravedad: {body['gravity']}")
+                    print(f"Inclinación: {body['inclination']}")
+                    print(f"Es Planeta: {body['isPlanet']}")
+                    print()
+
+        elif opt == "5":
+            api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
+            response = requests.get(api_url)
+            data = response.json()
+    
+            print("\n::: Cometas :::")
+            for body in data["bodies"]:
+                if body["bodyType"] == "Comet":
+                    print(f"Nombre: {body['englishName']}")
+                    print(f"Gravedad: {body['gravity']}")
+                    print(f"Inclinación: {body['inclination']}")
+                    print(f"Es Planeta: {body['isPlanet']}")
+                    print()
+
+        elif opt == "6":
+            print("Saliendo...")
             break
         else:
-            print("Invalid option. Please try again.")
-
-def get_planets():
-    api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
-    response = requests.get(api_url)
-    data = response.json()
-
-    print("\n#### Planets ####")
-    for body in data["bodies"]:
-        if body["bodyType"] == "Planet":
-            print(f"English name: {body['englishName']}")
-            print(f"Gravity: {body['gravity']}")
-            print(f"Inclination: {body['inclination']}")
-            print(f"Body type: {body['bodyType']}")
-            print()
-
-def get_moons():
-    api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
-    response = requests.get(api_url)
-    data = response.json()
-
-    print("\n#### Moons ####")
-    for body in data["bodies"]:
-        if body["bodyType"] == "Moon":
-            print(f"English name: {body['englishName']}")
-            print(f"Gravity: {body['gravity']}")
-            print(f"Inclination: {body['inclination']}")
-            print(f"Body type: {body['bodyType']}")
-            print()
-
-def get_stars():
-    api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
-    response = requests.get(api_url)
-    data = response.json()
-    
-    print("\n#### Stars ####")
-    for body in data["bodies"]:
-        if body["bodyType"] == "Star": 
-            print(f"English name: {body['englishName']}")
-            print(f"Gravity: {body['gravity']}")
-            print(f"Inclination: {body['inclination']}")
-            print(f"Body type: {body['bodyType']}")
-            print()
-
-def get_asteroids():
-    api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
-    response = requests.get(api_url)
-    data = response.json()
-    
-    print("\n#### Asteroids ####")
-    for body in data["bodies"]:
-        if body["bodyType"] == "Asteroid":
-            print(f"English name: {body['englishName']}")
-            print(f"Gravity: {body['gravity']}")
-            print(f"Inclination: {body['inclination']}")
-            print(f"Body type: {body['bodyType']}")
-            print()
-
-def get_comets():
-    api_url = "https://api.le-systeme-solaire.net/rest/bodies/"
-    response = requests.get(api_url)
-    data = response.json()
-    
-    print("\n#### Comets ####")
-    for body in data["bodies"]:
-        if body["bodyType"] == "Comet":
-            print(f"English name: {body['englishName']}")
-            print(f"Gravity: {body['gravity']}")
-            print(f"Inclination: {body['inclination']}")
-            print(f"Body type: {body['bodyType']}")
-            print()
+            print("Opción no valida. Intente otra vez")
 get_data()
